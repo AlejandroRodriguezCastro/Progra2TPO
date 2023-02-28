@@ -10,12 +10,14 @@ public class ListaAlumno implements ListaAlumnoTDA {
 	}
 	private NodoAlumno primero;
 	private NodoAlumno ultimo;
+	private NodoAlumno puntero;
 	private int cantidad;
 	
 	@Override
 	public void inicializarLista() {
 		primero = null;
 		ultimo = null;
+		puntero = null;
 		cantidad = 0;
 	}
 
@@ -69,12 +71,25 @@ public class ListaAlumno implements ListaAlumnoTDA {
 
 	@Override
 	public boolean haySiguiente() {
-		return (primero == null);
+		if(puntero == null) {
+			puntero = primero;	
+		}
+		if (puntero.sig == null) {
+			
+			return false;
+		}
+		return true;
 	}
 
 	@Override
 	public AlumnoTDA siguiente() {
-		return primero.info;
+		AlumnoTDA alumno = new Alumno();
+		alumno = puntero.info;
+		puntero = puntero.sig;
+		if (puntero == null) {
+			puntero = primero;
+		}
+		return alumno;
 	}
 
 	@Override

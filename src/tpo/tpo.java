@@ -12,10 +12,22 @@ public class tpo {
 		
 		AlumnoTDA alumno = new Alumno();
 		alumnosLista.inicializarLista();
-		
+		alumno.inicializarAlumno();
 		cargarAlumnos(alumnosLista);
 		System.out.println("Lista original: ");
-		mostrarLista(alumnosLista);
+		while(alumnosLista.haySiguiente()) {
+			alumno = alumnosLista.siguiente();
+			System.out.println(alumno.getNombre());
+		}
+		alumno = alumnosLista.siguiente();
+		System.out.println(alumno.getNombre());
+		while(alumnosLista.haySiguiente()) {
+			alumno = alumnosLista.siguiente();
+			System.out.println(alumno.getNombre());
+		}
+		alumno = alumnosLista.siguiente();
+		System.out.println(alumno.getNombre());
+		/*mostrarLista(alumnosLista);
 		alumnosLista.ordenarLista();
 		System.out.println("Lista ordenada: ");
 		mostrarLista(alumnosLista);
@@ -24,7 +36,7 @@ public class tpo {
 		alumno.setNombre("Agustín González");
 		alumnosLista.eliminarElemento(alumno);
 		System.out.println("Lista sin alumno: ");
-		mostrarLista(alumnosLista);
+		mostrarLista(alumnosLista);*/
 	}
 	
 	public static ListaAlumnoTDA copiaLista(ListaAlumnoTDA alumnosLista) {
@@ -37,17 +49,17 @@ public class tpo {
 		alumnosListaAux2.inicializarLista();
 		alumnosListaAux3.inicializarLista();
 		
-		while(!alumnosLista.haySiguiente()) {
+		while(alumnosLista.haySiguiente()) {
 			alumno = alumnosLista.siguiente();
 			alumnosListaAux.agregarElemento(alumno);
 			alumnosLista.eliminarElemento(alumno);
 		}
-		while(!alumnosListaAux.haySiguiente()) {
+		while(alumnosListaAux.haySiguiente()) {
 			alumno = alumnosListaAux.siguiente();
 			alumnosListaAux2.agregarElemento(alumno);
 			alumnosListaAux.eliminarElemento(alumno);
 		}
-		while(!alumnosListaAux2.haySiguiente()) {
+		while(alumnosListaAux2.haySiguiente()) {
 			alumno = alumnosListaAux2.siguiente();
 			alumnosListaAux3.agregarElemento(alumno);
 			alumnosLista.agregarElemento(alumno);
@@ -60,7 +72,7 @@ public class tpo {
 		ListaAlumnoTDA alumnosListaCopia = new ListaAlumno();
 		alumnosListaCopia.inicializarLista();
 		alumnosListaCopia = copiaLista(alumnosLista);
-		while(!alumnosListaCopia.haySiguiente()) {
+		while(alumnosListaCopia.haySiguiente()) {
 			System.out.print("Se saco a ");
 			System.out.print(alumnosListaCopia.siguiente().getNombre());
 			System.out.print(" de ");
