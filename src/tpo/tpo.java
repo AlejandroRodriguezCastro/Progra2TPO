@@ -12,7 +12,7 @@ public class tpo {
 		
 		AlumnoTDA alumno = new Alumno();
 		alumnosLista.inicializarLista();
-		
+		alumno.inicializarAlumno();
 		cargarAlumnos(alumnosLista);
 		System.out.println("Lista original: ");
 		mostrarLista(alumnosLista);
@@ -23,52 +23,22 @@ public class tpo {
 		alumno.setLegajo(222000);
 		alumno.setNombre("Agustín González");
 		alumnosLista.eliminarElemento(alumno);
-		System.out.println("Lista sin alumno: ");
+		System.out.println("Lista sin alumno (Agustín González): ");
 		mostrarLista(alumnosLista);
 	}
 	
-	public static ListaAlumnoTDA copiaLista(ListaAlumnoTDA alumnosLista) {
-		ListaAlumnoTDA alumnosListaAux = new ListaAlumno();
-		ListaAlumnoTDA alumnosListaAux2 = new ListaAlumno();
-		ListaAlumnoTDA alumnosListaAux3 = new ListaAlumno();
+	public static void mostrarLista(ListaAlumnoTDA alumnosLista) {
 		AlumnoTDA alumno = new Alumno();
 		alumno.inicializarAlumno();
-		alumnosListaAux.inicializarLista();
-		alumnosListaAux2.inicializarLista();
-		alumnosListaAux3.inicializarLista();
-		
-		while(!alumnosLista.haySiguiente()) {
+		alumnosLista.reiniciarSiguiente();
+		while(alumnosLista.haySiguiente()) {
 			alumno = alumnosLista.siguiente();
-			alumnosListaAux.agregarElemento(alumno);
-			alumnosLista.eliminarElemento(alumno);
-		}
-		while(!alumnosListaAux.haySiguiente()) {
-			alumno = alumnosListaAux.siguiente();
-			alumnosListaAux2.agregarElemento(alumno);
-			alumnosListaAux.eliminarElemento(alumno);
-		}
-		while(!alumnosListaAux2.haySiguiente()) {
-			alumno = alumnosListaAux2.siguiente();
-			alumnosListaAux3.agregarElemento(alumno);
-			alumnosLista.agregarElemento(alumno);
-			alumnosListaAux2.eliminarElemento(alumno);
-		}
-		return alumnosListaAux3;
-	}
-	
-	public static void mostrarLista(ListaAlumnoTDA alumnosLista) {
-		ListaAlumnoTDA alumnosListaCopia = new ListaAlumno();
-		alumnosListaCopia.inicializarLista();
-		alumnosListaCopia = copiaLista(alumnosLista);
-		while(!alumnosListaCopia.haySiguiente()) {
-			System.out.print("Se saco a ");
-			System.out.print(alumnosListaCopia.siguiente().getNombre());
+			System.out.print("Se muestra a ");
+			System.out.print(alumno.getNombre());
 			System.out.print(" de ");
-			System.out.print(alumnosListaCopia.siguiente().getEdad());
+			System.out.print(alumno.getEdad());
 			System.out.print(" años, con el legajo ");
-			System.out.println(alumnosListaCopia.siguiente().getLegajo());
-			alumnosListaCopia.eliminarElemento(alumnosListaCopia.siguiente());
-	
+			System.out.println(alumno.getLegajo());	
 		}
 	}
 	
