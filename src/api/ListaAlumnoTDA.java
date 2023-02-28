@@ -7,4 +7,5 @@ public interface ListaAlumnoTDA {
 	public boolean haySiguiente();
 	public AlumnoTDA siguiente();
 	public void eliminarElemento(AlumnoTDA elemento);
+	public void reiniciarSiguiente();
 }
